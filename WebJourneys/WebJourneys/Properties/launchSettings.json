@@ -6,6 +6,7 @@
       "applicationUrl": "http://localhost:49939",
       "sslPort": 44352
     }
+    
   },
   "profiles": {
     "IIS Express": {
@@ -14,6 +15,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+      
     },
     "WebJourneys": {
       "commandName": "Project",
@@ -22,6 +24,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+     
     }
   }
 }
