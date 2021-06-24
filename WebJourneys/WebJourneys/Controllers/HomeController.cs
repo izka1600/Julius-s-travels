@@ -5,22 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebJourneys.Data;
 using WebJourneys.Models;
 
 namespace WebJourneys.Controllers
 {
 	public class HomeController : Controller
 	{
+		private IRepository _repo;
 		private readonly ILogger<HomeController> _logger;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ILogger<HomeController> logger, IRepository repo)
 		{
 			_logger = logger;
+			_repo = repo;
 		}
 
 		public IActionResult Index()
 		{
-			return View();
+			var vm = _repo.GetAllPoints();
+			return View(vm);
 		}
 
 		public IActionResult Privacy()

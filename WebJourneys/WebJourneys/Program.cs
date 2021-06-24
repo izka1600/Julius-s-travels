@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WebJourneys.Models;
 
 namespace WebJourneys
 {
@@ -13,7 +16,19 @@ namespace WebJourneys
 	{
 		public static void Main(string[] args)
 		{
-			CreateHostBuilder(args).Build().Run();
+			var host = CreateHostBuilder(args).Build();
+			try
+			{
+				var scope = host.Services.CreateScope();
+				var ctx = scope.ServiceProvider.GetRequiredService<JuliusContext>();
+
+				ctx.Database.EnsureCreated();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+			host.Run();
 		}
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>

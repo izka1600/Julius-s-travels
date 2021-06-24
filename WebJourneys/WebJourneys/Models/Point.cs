@@ -12,5 +12,6 @@ namespace WebJourneys.Models
         public decimal? Latitude { get; set; }
         public string Popup { get; set; }
         public int? PostId { get; set; }
+        public string IconName { get; set; }
     }
 }

@@ -39,6 +39,8 @@ namespace WebJourneys.Models
 
                 entity.ToTable("Points", "Travels");
 
+                entity.Property(e => e.IconName).HasMaxLength(100);
+
                 entity.Property(e => e.Latitude).HasColumnType("decimal(10, 3)");
 
                 entity.Property(e => e.Longtitude).HasColumnType("decimal(10, 3)");

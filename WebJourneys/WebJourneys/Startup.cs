@@ -5,17 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebJourneys.Data;
+using WebJourneys.Models;
 
 namespace WebJourneys
 {
 	public class Startup
 	{
+		private IConfiguration _config;
 		public Startup(IConfiguration configuration)
 		{
-			Configuration = configuration;
+			_config = configuration;
 		}
 
 		public IConfiguration Configuration { get; }
@@ -24,6 +28,8 @@ namespace WebJourneys
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddDbContext<JuliusContext>(options => options.UseSqlServer(_config["DefaultConnection"]));
+			services.AddTransient<IRepository, Repository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
