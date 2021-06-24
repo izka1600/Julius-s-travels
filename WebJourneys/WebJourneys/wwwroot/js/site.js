@@ -3,8 +3,7 @@
 
 // Write your JavaScript code.
 
-var map = L.map('mapid').setView([52.230, 21.00], 10);
-
+var map = L.map('mapid').setView([52.230, 21.00], 6);
 // add the OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -14,5 +13,25 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // show the scale bar on the lower left corner
 L.control.scale().addTo(map);
 
+
+var redIcon = L.icon({
+    iconUrl: '../content/images/red_heart.png',
+
+    iconSize: [35, 35], // size of the icon
+    iconAnchor: [22, 30], // point of the icon which will correspond to marker's location
+    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var yellowIcon = L.icon({
+    iconUrl: '../content/images/yell_heart.png',
+
+    iconSize: [35, 35], // size of the icon
+    iconAnchor: [22, 30], // point of the icon which will correspond to marker's location
+    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+
+
 // show a marker on the map
-L.marker({ lon: 21.00, lat: 52.230 }).bindPopup('The start of the journey').addTo(map);
+L.marker({ lon: 21.00, lat: 52.230 }, { icon: redIcon }).bindPopup('Początek każdej przygody').addTo(map);
+
+//add markers for other journeys

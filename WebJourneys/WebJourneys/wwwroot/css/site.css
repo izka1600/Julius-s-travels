@@ -92,9 +92,9 @@ body {
 
 #mapid {
     position: relative;
-    margin: 10px 10px 10px 250px;
+    margin: 10px 10px 10px 10px;
     height: 500px;
-    width: 600px;
+    background-size: cover;
     border-radius: 40px;
 }
 
