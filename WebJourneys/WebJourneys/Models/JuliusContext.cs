@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace WebJourneys.Database
+namespace WebJourneys.Models
 {
     public partial class JuliusContext : DbContext
     {

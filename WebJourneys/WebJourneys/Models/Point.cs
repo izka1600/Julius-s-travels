@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace WebJourneys.Database
+namespace WebJourneys.Models
 {
     public partial class Point
     {
